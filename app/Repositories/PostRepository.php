@@ -89,6 +89,12 @@ class PostRepository
         return $result;
     }
 
+    /**
+     * delete Post with PostTranslations
+     * @param $id
+     *
+     * @return array
+     */
     public function deletePost($id): array
     {
         try {

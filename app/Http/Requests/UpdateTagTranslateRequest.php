@@ -23,7 +23,7 @@ class UpdateTagTranslateRequest extends FormRequest
     {
         return [
             'tag' => 'required|array',
-            'tag.*.locale' => 'required',
+            'tag.*.locale' => 'required|exists:languages,locale',
             'tag.*.name' => 'required',
 
         ];

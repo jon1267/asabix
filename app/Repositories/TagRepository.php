@@ -8,6 +8,10 @@ use App\Models\Language;
 
 class TagRepository
 {
+    /**
+     * @param $request
+     * @return array
+     */
     public function createTag($request): array
     {
         try {
@@ -24,6 +28,11 @@ class TagRepository
         return $result;
     }
 
+    /**
+     * @param $request
+     * @param $id
+     * @return array
+     */
     public function updateTag($request, $id): array
     {
         try {
@@ -41,6 +50,10 @@ class TagRepository
         return $result;
     }
 
+    /**
+     * @param $id
+     * @return array
+     */
     public function deleteTag($id): array
     {
         try {
