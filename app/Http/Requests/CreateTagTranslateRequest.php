@@ -24,7 +24,7 @@ class CreateTagTranslateRequest extends FormRequest
         return [
             'tag_id' => 'required|exists:tags,id',
             'tag' => 'required|array',
-            'tag.*.locale' => 'required',
+            'tag.*.locale' => 'required|exists:languages,locale',
             'tag.*.name' => 'required',
 
         ];

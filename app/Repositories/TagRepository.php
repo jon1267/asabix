@@ -76,8 +76,7 @@ class TagRepository
     public function createTagTranslations($request): array
     {
         try {
-            $tag = Tag::findOrFail($request->tag_id);
-            $tag_id = $tag->id;
+            $tag_id = $request['tag_id'];
             $tagTranslations = $request['tag'];
 
             foreach ($tagTranslations as $item) {
@@ -137,10 +136,13 @@ class TagRepository
     public function deleteTagTranslations($id): array
     {
         try {
-            $tagTranslations = TagTranslation::findOrFail($id);
-            $tagTranslations->delete();
+            $tagTranslations = TagTranslation::where('tag_id', $id)->get();
 
-            $result['body'] = ['success' => true, 'message'=> 'Post was successfully deleted'];
+            foreach ($tagTranslations as $translation) {
+                $translation->delete();
+            }
+
+            $result['body'] = ['success' => true, 'message'=> 'Tag translations was deleted'];
             $result['status_kod'] = 200;
         } catch (\Exception $e) {
             $result['body'] = ['success' => false, 'message' => $e->getMessage()];
